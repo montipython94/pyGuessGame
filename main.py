@@ -1,15 +1,19 @@
 import random
 
 class my_class():
+    # Array for mathematical operations
+    calcType = ["+", "-", "*", "/", "%"]
 
-    maths = ["+", "-", "*", "/", "%"]
-
-    def hints(self, randomNumber, guessedNumber, somethingStupid):
-        print("Too " + somethingStupid + " " + str(randomNumber))
-        evalString = eval(str(randomNumber) + str(random.choice(self.maths)) + str(guessedNumber))
+    #prints an hint
+    #Too small or too high
+    #calculates randomBumber and guessedNumber with an random operatior
+    def hints(self, randomNumber, guessedNumber, bigOrSmall):
+        print("Too " + bigOrSmall)
+        evalString = eval(str(randomNumber) + str(random.choice(self.calcType)) + str(guessedNumber))
         print("Tip: ", evalString)
 
-    def tipIn(self):
+    #starts the game
+    def start(self):
         playagain = True
 
         while playagain:
@@ -19,11 +23,11 @@ class my_class():
 
             while boolean:
                 try:
-                    number = input("Errate die Zahl ")
+                    number = input("Take a Guess: ")
                     number = int(number)
                     count += 1
                     if randomNumber == number:
-                        print("Nice - Your Tries: " + str(count))
+                        print("Nice - You needed: " + str(count) + " guesses")
                         boolean = False
 
                         try:
@@ -43,5 +47,5 @@ class my_class():
                     print("thats not a number, punk")
 
 
-my_object=my_class()
-my_object.tipIn()
+my_object = my_class()
+my_object.start()
