@@ -1,24 +1,26 @@
 import random
 
-class my_class():
+
+class GuessGame:
+
     # Array for mathematical operations
     calcType = ["+", "-", "*", "/", "%"]
 
-    #prints an hint
-    #Too small or too high
-    #calculates randomBumber and guessedNumber with an random operatior
-    def hints(self, randomNumber, guessedNumber, bigOrSmall):
-        print("Too " + bigOrSmall)
-        evalString = eval(str(randomNumber) + str(random.choice(self.calcType)) + str(guessedNumber))
+#   prints an hint
+#   Too small or too high
+#   calculates randomnumber and guessednumber with an random operator
+    def hints(self, randomnumber, guessednumber, bigorsmall):
+        print("Too " + bigorsmall)
+        evalString = eval(str(randomnumber) + str(random.choice(self.calcType)) + str(guessednumber))
         print("Tip: ", evalString)
 
-    #starts the game
+#   starts the game
     def start(self):
         playagain = True
 
         while playagain:
             count = 0
-            randomNumber = random.randint(1, 100)
+            randomnumber = random.randint(1, 100)
             boolean = True
 
             while boolean:
@@ -26,7 +28,7 @@ class my_class():
                     number = input("Take a Guess: ")
                     number = int(number)
                     count += 1
-                    if randomNumber == number:
+                    if randomnumber == number:
                         print("Nice - You needed: " + str(count) + " guesses")
                         boolean = False
 
@@ -38,14 +40,14 @@ class my_class():
                         except:
                             print("You wanna fight me?")
 
-                    elif randomNumber < number:
-                        self.hints(randomNumber, number, "big")
-                    elif randomNumber > number:
-                        self.hints(randomNumber, number, "small")
+                    elif randomnumber < number:
+                        self.hints(randomnumber, number, "big")
+                    elif randomnumber > number:
+                        self.hints(randomnumber, number, "small")
 
-                except:
+                except ValueError:
                     print("thats not a number, punk")
 
 
-my_object = my_class()
+my_object = GuessGame()
 my_object.start()
